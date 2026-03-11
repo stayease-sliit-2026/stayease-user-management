@@ -7,3 +7,4 @@
 // Commit 5: Add user controller 
 // Commit 6: Add user service 
 // Commit 7: Add logger utility 
+// Commit 8: Add Dockerfile 
