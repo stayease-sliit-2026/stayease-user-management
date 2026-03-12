@@ -8,3 +8,4 @@
 // Commit 6: Add user service 
 // Commit 7: Add logger utility 
 // Commit 8: Add Dockerfile 
+// Commit 9: Add .env.example 
