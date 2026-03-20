@@ -2,6 +2,9 @@
 
 A production-ready Node.js/Express backend for StayEase, focused on secure admin user management. Runs with Docker, supports cloud MongoDB, and integrates with an external Auth Service for JWT-based admin authentication.
 
+
+
+
 ## Features
 - Admin-only REST API for user management
 - JWT authentication via external Auth Service
