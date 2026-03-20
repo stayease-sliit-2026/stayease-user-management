@@ -46,6 +46,22 @@ Swagger UI is available at `/api-docs` (e.g., `http://localhost:3005/api-docs`).
 	1. Install dependencies: `npm install`
 	2. Start server: `npm start`
 
+## CI/CD Pipeline (GitHub Actions)
+- Workflow file: `.github/workflows/deploy.yml`
+- CI runs on every push and pull request:
+	1. `npm ci`
+	2. `node --check src/index.js`
+	3. `npm test --if-present`
+- CD runs on pushes to `main`:
+	1. Builds and pushes Docker image to `ghcr.io/<owner>/<repo>`
+	2. Tags image with `latest` and commit SHA
+	3. Triggers deployment webhook (if configured)
+
+### Required GitHub Settings
+- In repository settings, enable package publishing permissions for workflows.
+- Add repository secret:
+	1. `DEPLOY_WEBHOOK_URL` (optional): webhook URL for your hosting platform (Render/Railway/Cloud Run trigger service, etc.)
+
 ## Troubleshooting
 - **Auth Service not reachable in Docker?** Use `host.docker.internal` in your URLs.
 - **MongoDB connection issues?** Ensure your cloud MongoDB URI is correct and accessible from Docker.
