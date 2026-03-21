@@ -1,0 +1,22 @@
+{
+	"name": "stayease-user-service",
+	"version": "1.0.0",
+	"description": "User Service microservice for StayEase hotel booking system.",
+	"main": "src/index.js",
+	"scripts": {
+		"start": "node src/index.js",
+		"dev": "nodemon src/index.js"
+	},
+	"dependencies": {
+		"axios": "^1.6.7",
+		"cors": "^2.8.5",
+		"dotenv": "^16.4.5",
+		"express": "^4.18.2",
+		"mongoose": "^7.6.3"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.14"
+	},
+	"author": "StayEase Team",
+	"license": "MIT"
+}
