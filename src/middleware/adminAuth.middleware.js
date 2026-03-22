@@ -5,7 +5,7 @@ module.exports = async function adminAuth(req, res, next) {
     console.log('Admin auth middleware invoked resquest headers:', req.headers);
     const authHeader = req.headers['authorization'];
     if (!authHeader) return res.status(401).json({ success: false, message: 'No token provided' });
-    const response = await axios.get('https://auth-service-555972249634.asia-south1.run.app/auth/verify', {
+    const response = await axios.get(process.env.AUTH_SERVICE_URL, {
       headers: { Authorization: authHeader }
     });
     console.log('Auth service response:', response.data);
