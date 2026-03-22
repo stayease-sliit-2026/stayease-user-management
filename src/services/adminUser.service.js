@@ -1,7 +1,26 @@
+
+const axios = require('axios');
 const User = require('../models/user.model');
 
 exports.createUser = async (data) => {
-  // Optionally hash password here if needed
+  // Register user in external Auth Service first
+  try {
+    console.log('Registering user with Auth Service:', data);
+    const authRes = await axios.post('https://auth-service-555972249634.asia-south1.run.app/auth/register', {
+      name: data.name,
+      email: data.email,
+      mobile: data.mobile,
+      password: data.password
+    });
+    console.log('Auth Service registration response:', authRes.data);
+    if (!authRes.data.message) {
+        console.error('Auth Service registration failed:', authRes.data);
+      throw new Error('Auth Service registration failed');
+    }
+  } catch (err) {
+    throw new Error('Auth Service registration failed: ' + (err.response?.data?.message || err.message));
+  }
+  // Save user locally
   const user = new User(data);
   return await user.save();
 };

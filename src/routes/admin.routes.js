@@ -5,7 +5,7 @@ const { validateObjectId } = require('../middleware/validateObjectId.middleware'
 const adminController = require('../controllers/admin.controller');
 
 // Create user (admin)
-router.post('/admin/all', adminAuth, adminController.createUser);
+router.post('/admin', adminAuth, adminController.createUser);
 // Get all users
 router.get('/admin/all', adminAuth, adminController.getAllUsers);
 
