@@ -5,7 +5,7 @@ module.exports = async function adminAuth(req, res, next) {
     console.log('Admin auth middleware invoked resquest headers:', req.headers);
     const authHeader = req.headers['authorization'];
     if (!authHeader) return res.status(401).json({ success: false, message: 'No token provided' });
-    const response = await axios.get('http://localhost:8080/auth/auth/verify', {
+    const response = await axios.get('http://host.docker.internal:8080/auth/auth/verify', {
       headers: { Authorization: authHeader }
     });
     console.log('Auth service response:', response.data);
