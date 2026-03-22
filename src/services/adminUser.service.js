@@ -6,7 +6,7 @@ exports.createUser = async (data) => {
   // Register user in external Auth Service first
   try {
     console.log('Registering user with Auth Service:', data);
-    const authRes = await axios.post('https://auth-service-555972249634.asia-south1.run.app/auth/register', {
+    const authRes = await axios.post(process.env.AUTH_SERVICE_REGISTER, {
       name: data.name,
       email: data.email,
       mobile: data.mobile,
